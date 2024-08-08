@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   corsOption: {
-   origin: "https://chat-app-kappa-swart.vercel.app/",
+  origin: ['http://localhost:3000', "https://chat-app-kappa-swart.vercel.app/"],
   methods: ["GET", "POST"],
   allowedHeaders: ['Content-Type'],
   credentials: true,
