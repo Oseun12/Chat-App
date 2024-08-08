@@ -19,6 +19,7 @@
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5"
   },
+  
   "description": "<img src=\"https://raw.githubusercontent.com/alamorre/nextjs-chat-app/main/assets/nextjs-chat-tutorial.png\" width=\"75%\" height=\"100%\" />",
   "main": "index.js",
   "keywords": [],
