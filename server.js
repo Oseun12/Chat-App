@@ -6,13 +6,15 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
-  cors: {
-   origin: "http://localhost:3000",
-  methods: ["GET", "POST"]
+  corsOption: {
+   origin: "https://chat-app-kappa-swart.vercel.app/",
+  methods: ["GET", "POST"],
+  allowedHeaders: ['Content-Type'],
+  credentials: true,
  }
 });
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 io.on('connection', (socket) => {
   console.log('New client connected');
