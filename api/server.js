@@ -6,7 +6,10 @@ const { createServer } = require("http");
 const server = createServer();
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: [
+      "http://localhost:3000",
+      "https://chat-hxzfuncb3-marys-projects-cf8a8ef9.vercel.app" // Add your deployed app's origin here
+    ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
