@@ -49,7 +49,7 @@ const { createServer } = require("http");
 const server = createServer();
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:3000", "https://chat-app-kappa-swart.vercel.app"],
+    origin: ["https://chat-app-kappa-swart.vercel.app"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
