@@ -7,8 +7,8 @@ const server = createServer();
 const io = new Server(server, {
   cors: {
     origin: [
+      "https://chat-ai1v8q0ih-marys-projects-cf8a8ef9.vercel.app",
       "http://localhost:3000",
-      "https://chat-app-two-black.vercel.app"
     ],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
