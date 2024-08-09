@@ -76,9 +76,10 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../context";
 import io from "socket.io-client";
 
-const socket = typeof window !== "undefined" ? io("http://localhost:4000", {
-    withCredentials: true,
+const socket = typeof window !== "undefined" ? io(process.env.REACT_APP_SOCKET_URL, {
+  withCredentials: true,
 }) : null;
+
 
 export default function Chats() {
   const { username } = useContext(Context);
