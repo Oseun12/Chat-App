@@ -76,7 +76,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../context";
 import io from "socket.io-client";
 
-const socket = typeof window !== "undefined" ? io(process.env.REACT_APP_SOCKET_URL, {
+const socket = typeof window !== "undefined" ? io("https://chat-g5c2bbgo3-marys-projects-cf8a8ef9.vercel.app", {
   withCredentials: true,
 }) : null;
 
