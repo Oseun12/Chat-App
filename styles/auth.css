@@ -3,17 +3,17 @@
   position: absolute;
   top: 0px;
   left: 0px;
-  width: calc(100vw - 200px);
-  height: calc(100vh - 200px);
-  background: linear-gradient(150deg, #d9dbe2, #808aac 100%, #282d39 0);
+  /* width: calc(100vw - 200px);
+  height: calc(100vh - 200px); */
+  background: linear-gradient(150deg, #6c776f, #454c63 100%, #282d39 0);
 }
 
 .auth-container {
   width: 420px;
   height: 292px;
   position: relative;
-  top: calc(50vh - 144px - 100px);
-  left: calc(50vw - 240px - 100px);
+  /* top: calc(20vh - 144px - 100px); */
+  /* left: calc(28vw - 230px - 100px); */
   background-color: #4a5162;
   border-radius: 24px;
   box-shadow: 0 2px 15px rgb(0 0 0 / 68%);
@@ -61,4 +61,36 @@
 
 .submit-button::hover {
   background-color: #938ffe;
+}
+
+
+@media (min-width: 610px) {
+  .auth-container {
+    width: 420px;
+    height: 292px;   
+    border-radius: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  .auth-container {
+    width: 420px;
+    height: 292px;  
+    margin-left: 100px; 
+  }
+}
+
+@media (min-width: 992px) {
+  .auth-container {
+    width: 420px;
+    height: 292px;  
+    margin-left: 190px; 
+  }
+}
+@media (min-width: 1200px) {
+  .auth-container {
+    width: 420px;
+    height: 292px;  
+    margin-left: 280px; 
+  }
 }

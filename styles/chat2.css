@@ -25,7 +25,7 @@ body, html {
 }
   
 /* Member list */
-.member-list {
+/* .member-list {
     width: 200px;
     padding: 10px;
     background-color: #535a6d;
@@ -43,7 +43,7 @@ body, html {
     background-color: #726dfe;
     padding: 5px;
     border-radius: 5px;
-}
+} */
   
 /* Chat section */
 .chat-section {
@@ -107,24 +107,36 @@ body, html {
 }
   
 /* Responsive adjustments */
-@media (max-width: 768px) {
-    .chat-container {
-        width: 100%; /* Adjust to full width on smaller screens */
-        height: auto; /* Allow height to be auto-adjustable */
-    }
 
-    .member-list {
-        width: 150px;
+@media (min-width: 320px) {
+    .chat-container {
+        display: flex;
+        background-color: #4a5162;
+        box-shadow: 0 2px 15px rgb(0 0 0 / 68%);
+        border-radius: 20px;
+        width: 300px; 
+        height: 400px; 
     }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 480px) {
     .chat-container {
         flex-direction: column; /* Stack chat sections vertically on very small screens */
         height: auto;
+        width: 700px; 
+        height: 500px; 
     }
 
-    .member-list {
-        width: 100%; /* Take full width */
+    
+}
+
+@media (min-width: 768px) {
+    .chat-container {
+        width: 700px; 
+        height: 700px; 
+    }
+    .chat-window {
+        max-height: 600px; 
     }
 }
+
