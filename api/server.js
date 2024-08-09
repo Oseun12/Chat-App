@@ -4,16 +4,25 @@ const { createServer } = require("http");
 
 // const app = express();
 const server = createServer();
-const io = new Server(server, {
+const io = require('socket.io')(server, {
   cors: {
-    origin: ["*",
-      "http://localhost:3000",
-    ],
+    origin: "https://chat-8fq2850p7-marys-projects-cf8a8ef9.vercel.app",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
-    credentials: true,
-  },
+    credentials: true
+  }
 });
+
+// const io = new Server(server, {
+//   cors: {
+//     origin: ["*",
+//       "http://localhost:3000",
+//     ],
+//     methods: ["GET", "POST"],
+//     allowedHeaders: ["Content-Type"],
+//     credentials: true,
+//   },
+// });
 
 
 io.on("connection", (socket) => {
