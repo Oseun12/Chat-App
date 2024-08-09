@@ -3,9 +3,10 @@
 // import { useRouter } from "next/router";
 // import io from "socket.io-client";
 
-// const socket = io("window.location.4000", {
+// const hostname = io(window.location.hostname, {
 //   withCredentials: true,
 // });
+
 // // https://chat-g5c2bbgo3-marys-projects-cf8a8ef9.vercel.app
 // export default function Chats() {
 //   const { username, secret } = useContext(Context);
@@ -76,7 +77,9 @@ import { Context } from "../context";
 import { useRouter } from "next/router";
 import io from "socket.io-client";
 
-let socket;
+const socket = io("http://localhost:4000", {
+    withCredentials: true,
+ });
 
 export default function Chats() {
   const { username, secret } = useContext(Context);
@@ -87,34 +90,25 @@ export default function Chats() {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Construct the socket URL with window.location.hostname and port 4000
-      const socketUrl = `http://${window.location.hostname}:4000`;
-
-      socket = io(socketUrl, {
-        withCredentials: true,
-      });
-
-      console.log("Document check:", typeof document !== "undefined");
       setShowChat(true);
-      console.log("Chat should be visible now.");
-
-      socket.on("receiveMessage", (message) => {
-        console.log("Received message:", message);
-        setMessages((prevMessages) => [...prevMessages, message]);
-      });
     }
 
-    return () => {
-      if (socket) {
+    if (socket) {
+      socket.on("receiveMessage", (message) => {
+        setMessages((prevMessages) => [...prevMessages, message]);
+      });
+
+      return () => {
         socket.off("receiveMessage");
-      }
-    };
+      };
+    }
   }, []);
 
   const sendMessage = () => {
-    console.log("Sending message:", { username, text: message });
-    socket.emit("sendMessage", { username, text: message });
-    setMessage("");
+    if (socket) {
+      socket.emit("sendMessage", { username, text: message });
+      setMessage("");
+    }
   };
 
   if (!showChat) return <div />;
