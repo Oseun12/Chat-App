@@ -13,17 +13,6 @@ const io = require('socket.io')(server, {
   }
 });
 
-// const io = new Server(server, {
-//   cors: {
-//     origin: ["*",
-//       "http://localhost:3000",
-//     ],
-//     methods: ["GET", "POST"],
-//     allowedHeaders: ["Content-Type"],
-//     credentials: true,
-//   },
-// });
-
 
 io.on("connection", (socket) => {
   console.log("New client connected");

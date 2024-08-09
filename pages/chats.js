@@ -7,19 +7,26 @@ import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../context";
 import io from "socket.io-client";
 
-const socket = typeof window !== "undefined" ? io(process.env.NODE_ENV === "production" ? window.location.origin : "http://localhost:4000", {
-  withCredentials: true,
-}) : null;
-
 
 export default function Chats() {
+  const isBrowser = typeof window !== "undefined";
+  const isProd = process.env.NODE_ENV === "production";
+  const backendBaseUrl = "http://localhost:3000"
+  const baseUrl = window.location.origin;
   const { username } = useContext(Context);
   const [showChat, setShowChat] = useState(false);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
 
+  console.table({baseUrl, isBrowser})
+
+  const socket = io(baseUrl, {
+    withCredentials: true,
+  });
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    
+    if (isBrowser) {
       setShowChat(true);
     }
 
