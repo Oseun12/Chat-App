@@ -6,7 +6,7 @@ const { createServer } = require("http");
 const server = createServer();
 const io = require('socket.io')(server, {
   cors: {
-    origin: "https://chat-5sm93wg42-marys-projects-cf8a8ef9.vercel.app",
+    origin: "https://chat-app-two-black.vercel.app",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true
