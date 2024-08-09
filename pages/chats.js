@@ -68,25 +68,23 @@
 //     </div>
 //   );
     
-  
+  // https://chat-app-git-master-marys-projects-cf8a8ef9.vercel.app/
 // }
 
 
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../context";
-import { useRouter } from "next/router";
 import io from "socket.io-client";
 
-const socket = io("http://localhost:4000", {
+const socket = typeof window !== "undefined" ? io("http://localhost:4000", {
     withCredentials: true,
- });
+}) : null;
 
 export default function Chats() {
-  const { username, secret } = useContext(Context);
+  const { username } = useContext(Context);
   const [showChat, setShowChat] = useState(false);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
-  const router = useRouter();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -102,7 +100,7 @@ export default function Chats() {
         socket.off("receiveMessage");
       };
     }
-  }, []);
+  }, [socket]);
 
   const sendMessage = () => {
     if (socket) {
@@ -116,7 +114,6 @@ export default function Chats() {
   return (
     <div className="background">
       <div className="chat-container">
-        <div className="member-list"></div>
         <div className="chat-section">
           <div className="chat-window">
             {messages.map((msg, index) => (
@@ -139,4 +136,3 @@ export default function Chats() {
     </div>
   );
 }
-
