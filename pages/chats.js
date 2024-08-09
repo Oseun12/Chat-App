@@ -11,7 +11,7 @@ import io from "socket.io-client";
 export default function Chats() {
   const isBrowser = typeof window !== "undefined";
   const isProd = process.env.NODE_ENV === "production";
-  const backendBaseUrl = "http://localhost:3000"
+  const backendBaseUrl = "http://localhost:4000"
   const baseUrl = window.location.origin;
   const { username } = useContext(Context);
   const [showChat, setShowChat] = useState(false);
