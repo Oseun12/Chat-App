@@ -11,8 +11,9 @@ import io from "socket.io-client";
 export default function Chats() {
   const isBrowser = typeof window !== "undefined";
   const isProd = process.env.NODE_ENV === "production";
-  const backendBaseUrl = "http://localhost:4000"
-  const baseUrl = window.location.origin;
+  const backendBaseUrl = "http://localhost:4000";
+  // const baseUrl = window.location.origin;
+  const baseUrl = isProd ? "https://chat-app-two-black.vercel.app" : "http://localhost:4000";
   const { username } = useContext(Context);
   const [showChat, setShowChat] = useState(false);
   const [messages, setMessages] = useState([]);

@@ -6,7 +6,7 @@ const { createServer } = require("http");
 const server = createServer();
 const io = require('socket.io')(server, {
   cors: {
-    origin: "https://chat-app-two-black.vercel.app",
+    origin: ["http://localhost:3000", "https://chat-app-two-black.vercel.app"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
     credentials: true
