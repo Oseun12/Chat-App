@@ -1,8 +1,4 @@
 
-
-
-// // https://chat-g5c2bbgo3-marys-projects-cf8a8ef9.vercel.app
-
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../context";
 import io from "socket.io-client";
@@ -78,3 +74,6 @@ export default function Chats() {
     </div>
   );
 }
+
+
+// // https://chat-g5c2bbgo3-marys-projects-cf8a8ef9.vercel.app

@@ -17,7 +17,7 @@ export default function Auth() {
     <div className="background">
       <div className="auth-container">
         <form className="auth-form" onSubmit={(e) => onSubmit(e)}>
-          <div className="auth-title">House Chat</div>
+          <div className="auth-title">Group Chat</div>
           <div className="input-container">
             <input 
               placeholder="Username" 
@@ -33,7 +33,7 @@ export default function Auth() {
               onChange={e => setSecret(e.target.value)} 
             />
           </div>
-          <button type="submit" className="submit-button">Login/Signup</button>
+          <button type="submit" className="submit-button">Join</button>
         </form>
       </div>
     </div>

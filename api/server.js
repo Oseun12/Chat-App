@@ -1,28 +1,42 @@
-// const express = require("express");
 const { Server } = require("socket.io");
 const { createServer } = require("http");
 
-// const app = express();
 const server = createServer();
-const io = require('socket.io')(server, {
+const io = new Server(server, {
   cors: {
     origin: ["http://localhost:3000", "https://chat-app-two-black.vercel.app"],
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
-    credentials: true
-  }
+    credentials: true,
+  },
 });
 
+let onlineUsers = {};
 
 io.on("connection", (socket) => {
-  console.log("New client connected");
+  // Extract the username from the handshake query
+  const { username } = socket.handshake.query;
+  
+  // Add the user to the onlineUsers object
+  onlineUsers[socket.id] = username;
+  
+  // Broadcast the updated list of online users to all clients
+  io.emit("updateUserList", Object.values(onlineUsers));
+  
+  console.log(`${username} connected`);
 
+  // Handle incoming messages
   socket.on("sendMessage", (message) => {
     io.emit("receiveMessage", message);
   });
 
+  // Handle user disconnect
   socket.on("disconnect", () => {
-    console.log("Client disconnected");
+    console.log(`${username} disconnected`);
+    
+    delete onlineUsers[socket.id];
+    
+    io.emit("updateUserList", Object.values(onlineUsers));
   });
 });
 
